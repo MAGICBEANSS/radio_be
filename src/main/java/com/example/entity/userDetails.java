@@ -28,7 +28,8 @@ public class userDetails {
 	private Date lastLogin;
 	private String usertype;
 	private String provider;
-	private boolean isActive;
+	
+	private boolean isActive = true;
 	
 	public boolean isActive() {
 		return isActive;
