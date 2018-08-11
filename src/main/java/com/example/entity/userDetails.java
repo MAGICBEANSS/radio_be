@@ -26,25 +26,42 @@ public class userDetails {
 	private String lastName;
 	private String token;
 	private Date lastLogin;
-	private String isAdmin;
+	private String usertype;
+	private String provider;
+	private boolean isActive;
 	
-	public String getIsAdmin() {
-		return isAdmin;
+	public boolean isActive() {
+		return isActive;
 	}
-	public void setIsAdmin(String isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
-	@Override
-	public String toString() {
-		return "userDetails [getEmail()=" + getEmail() + ", getUid()=" + getUid() + ", getPassword()=" + getPassword()
-				+ ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + ", getToken()="
-				+ getToken() + ", getLastLogin()=" + getLastLogin() + "]";
-	}
+	
+	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Override
+	public String toString() {
+		return "userDetails [isActive()=" + isActive() + ", getEmail()=" + getEmail() + ", getUsertype()="
+				+ getUsertype() + ", getProvider()=" + getProvider() + ", getUid()=" + getUid() + ", getPassword()="
+				+ getPassword() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+				+ ", getToken()=" + getToken() + ", getLastLogin()=" + getLastLogin() + "]";
+	}
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+	public String getProvider() {
+		return provider;
+	}
+	public void setProvider(String provider) {
+		this.provider = provider;
 	}
 	public String getUid() {
 		return uid;
