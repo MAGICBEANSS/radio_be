@@ -33,7 +33,7 @@ public class Registration {
 	@Autowired
     private JavaMailSender mailSender;
 	
-	@ResponseBody
+
 	@RequestMapping(value="/user/registration", method= RequestMethod.POST, produces = "application/json")
 	public  ResponseEntity<userDetails> userRegistration(@RequestBody userDetails userDetails) {
 		System.out.println("User Registration");
@@ -48,7 +48,7 @@ public class Registration {
 		}
 	}
 	
-	@ResponseBody
+
 	@RequestMapping(value="/login", method= RequestMethod.POST	,consumes="application/json")
 	public ResponseEntity<LoginResponse> checkLogin(@RequestBody userDetails userdetails) {
 		try {
@@ -61,7 +61,7 @@ public class Registration {
 		}
 	}
 	
-	@ResponseBody
+
 	@RequestMapping(value="/forgotpassword", method=RequestMethod.POST)
 	public ResponseEntity<Boolean> forgotpasswd(@RequestBody ForgotPassword  requestobj) throws MessagingException
 	{
