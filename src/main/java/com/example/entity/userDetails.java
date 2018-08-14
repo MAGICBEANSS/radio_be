@@ -3,31 +3,22 @@ package com.example.entity;
 import java.sql.Date;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="USER_DETAILS")
-@DiscriminatorValue("P")
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-
-
 public class userDetails {
 	@Column(unique=true)
 	private String email;
 	
 	@Id 
-	@GenericGenerator(name="seq_id_", strategy="com.example.StockCodeGenerator")
-	@GeneratedValue(generator="seq_id_")
+	@GenericGenerator(name="seq_id", strategy="com.example.StockCodeGenerator")
+	@GeneratedValue(generator="seq_id")
 	@Column(name="userId")
 	private String uid;
 	private String password;
@@ -37,8 +28,7 @@ public class userDetails {
 	private Date lastLogin;
 	private String usertype;
 	private String provider;
-	
-	private boolean isActive = true;
+	private boolean isActive;
 	
 	public boolean isActive() {
 		return isActive;
