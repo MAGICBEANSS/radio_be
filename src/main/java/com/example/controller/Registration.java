@@ -39,7 +39,10 @@ public class Registration {
 		System.out.println("User Registration");
 		try {
 			System.out.println("User Registration1");
-			return this.registrationService.saveUserDetails(userDetails);
+			 ResponseEntity<userDetails> rt = new  ResponseEntity<userDetails>(new userDetails(),HttpStatus.CHECKPOINT);
+			rt = this.registrationService.saveUserDetails(userDetails);
+			System.out.println("ooo "+rt.getBody());
+			return rt;
 		} catch (SQLDataException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

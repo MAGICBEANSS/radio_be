@@ -18,7 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name="USER_DETAILS")
 @DiscriminatorValue("P")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 
 
 public class userDetails {
