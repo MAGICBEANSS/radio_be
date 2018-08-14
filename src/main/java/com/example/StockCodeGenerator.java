@@ -10,9 +10,12 @@ import java.util.Random;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.IdentifierGenerator;
+
+import com.example.entity.userDetails;
 
 public class StockCodeGenerator implements IdentifierGenerator {
 
@@ -23,16 +26,15 @@ public class StockCodeGenerator implements IdentifierGenerator {
         try {
             Statement statement=connection.createStatement();
             System.out.println("fsdf");
-
-//            ResultSet rs=statement.executeQuery("select * from entity.USER_DETAILS");
-//            	System.out.println(rs);
-//                int id=rs.getInt(1)+101;
-            	Random random = new Random();
-            	int rnd = random.nextInt(100);
-                String generatedId = prefix + rnd;
-                System.out.println("Generated Id: " + generatedId);
-                System.out.println(generatedId + " Generated Id");
-                return generatedId;
+            ResultSet rs=statement.executeQuery("select count(userId) from USER_DETAILS");    
+            if(rs.next())
+            {
+            
+                Long id=rs.getLong(1)+new Long(10000001)*100;
+                String generatedId = prefix + new Long(id).toString();
+                System.out.println("Generated Id: " + id);
+                return id.toString();
+            }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
