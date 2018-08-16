@@ -17,10 +17,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="USER_DETAILS")
-@DiscriminatorValue("P")
-//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-
-
 public class userDetails {
 	@Column(unique=true)
 	private String email;
@@ -28,7 +24,7 @@ public class userDetails {
 	@Id 
 	@GenericGenerator(name="seq_id_", strategy="com.example.StockCodeGenerator")
 	@GeneratedValue(generator="seq_id_")
-	@Column(name="userId")
+	@Column(name="userId" ,  insertable = false, updatable = false, nullable = false)
 	private String uid;
 	private String password;
 	private String firstName;

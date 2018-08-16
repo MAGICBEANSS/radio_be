@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entity.ForgotPassword;
 import com.example.entity.LoginResponse;
+import com.example.entity.admin_details;
 import com.example.entity.userDetails;
 
 @Transactional
@@ -50,20 +51,21 @@ public class RegistrationRepository  implements RegistrationDAO{
 		}
 		else {
 			
-		session.persist(userDetails);
-//		if(userDetails.getUsertype().equals("admin"))
-//		{
-//		admin_details adm = new admin_details();
-//	//	adm.setFieldsfromuserdetails(userDetails);
-//	//	adm.setUid("sdd");
-//		System.out.println(adm);
-//	//	adm = (admin_details) userDetails; 
-//		adm.setUserId(userDetails.getUid());
-//		session.saveOrUpdate(adm);
-//		System.out.println(adm);
-//		}
-			
+			userDetails = (userDetails)session.merge(userDetails);
+			session.flush();
+			session.clear();
+		if(userDetails.getUsertype().equals("admin"))
+		{
+			System.out.println("udetails before admin "+userDetails);
+		admin_details adm = new admin_details();
+		adm.setUserId(userDetails.getUid());
+		session.merge(adm);
+		System.out.println("adm "+adm);
+		}
+		
 			System.out.println(userDetails);
+	//		session.close();
+			
 			ResponseEntity<userDetails> rt =  new ResponseEntity<userDetails>(userDetails,HttpStatus.OK);
 		return rt;
 		}
